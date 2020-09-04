@@ -16,3 +16,6 @@
 
 1. *downloadfile.py* for Download file from db.
 2. *uploadfile.py* for uploading file in db.
+3. *database.sql* create table for this code.
+
+> Note: Please change the database credentials in both .py file.
