@@ -1,8 +1,7 @@
 import psycopg2
 
 def write_file(data, filename):
-    filename2 = 'file_download/'+ filename 
-    with open(filename2, 'wb') as f:
+    with open(filename, 'wb') as f:
         f.write(data)
 
 def read_file(filename):
