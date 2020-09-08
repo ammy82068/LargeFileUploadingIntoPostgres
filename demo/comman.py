@@ -1,5 +1,6 @@
 import psycopg2, os
 
+folderPath = "P:/temp/"
 
 # file upload start
 def file_read(filePath, filename):
@@ -12,7 +13,7 @@ def file_read(filePath, filename):
 def file_insert(filePath, filename):
     data = file_read(filePath, filename)
     #print(data)
-    conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=arit@123")
+    conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=amit@123")
     cur = conn.cursor()
     cur.execute("INSERT INTO documents(filename,file) " +
                     "VALUES(%s,%s)", (filename, psycopg2.Binary(data)))
@@ -29,12 +30,12 @@ def file_insert(filePath, filename):
 
 def write_file(data, filename):
     with open(filename, 'wb') as f:
-        f.write(data)
+        # f.write(data)
         return filename
 
 def download_file(_id):
 
-    conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=arit@123")
+    conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=amit@123")
     cur = conn.cursor()
     cur.execute("""SELECT filename, file FROM documents WHERE id = %s """, (_id,))
     d1 = cur.fetchone()
