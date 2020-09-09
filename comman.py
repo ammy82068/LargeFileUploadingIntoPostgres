@@ -28,9 +28,11 @@ def file_insert(filePath, filename):
 # file download functions
 
 def write_file(data, filename):
-    with open(filename, 'wb') as f:
+    folder = '.\\all_files\\'
+    filepath = folder+filename
+    with open(filepath, 'wb') as f:
         f.write(data)
-        return filename
+        return filepath
 
 def download_file(_id):
 

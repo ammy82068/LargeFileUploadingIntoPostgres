@@ -5,13 +5,13 @@ from comman2 import file_upload
 api = Flask(__name__)
 
 
-@api.route('/upload', methods=['POST'])
-def uploadFile():
+# @api.route('/upload', methods=['POST'])
+# def uploadFile():
     
-    filePath = request.args.get('fpath')
-    fileName = request.args.get('fName')
-    file_insert(filePath, fileName)
-    return "file uploaded"
+#     filePath = request.args.get('fpath')
+#     fileName = request.args.get('fName')
+#     file_insert(filePath, fileName)
+#     return "file uploaded"
 
 @api.route('/download', methods=['GET'])
 def downloadFile():
@@ -19,13 +19,12 @@ def downloadFile():
     response = download_file(fileId)
     return send_file(response ,as_attachment=True)
 
-@api.route('/up', methods=['POST'])
+@api.route('/upload', methods=['POST'])
 def upload():
     filename = request.args.get('fName')
-    filedat = request.args.get('fData')
-    res = bytes(filedat, 'utf-8') 
-    file_upload(filename, res)
-    return "file uploaded"
+    filedat = request.data
+    file_upload(filename, filedat)
+    return "file uploaded" + filename
 
 
 # serve at localhost:5000
